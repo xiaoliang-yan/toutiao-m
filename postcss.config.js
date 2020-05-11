@@ -8,8 +8,11 @@ module.exports = {
     // autoprefixer: {
     //   browsers: ['Android >= 4.0', 'iOS >= 8']
     // },
+
+    // 把px转换成rem
     'postcss-pxtorem': {
       rootValue: 37.5,
+      // 需要转换的css属性 ，*就是所有的属性都要转换
       propList: ['*']
     }
   }
