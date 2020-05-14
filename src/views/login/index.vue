@@ -8,12 +8,21 @@
     @click-left="$router.back()" />
     <!-- /导航栏 -->
     <!-- 登录表单 -->
-    <van-cell-group>
+    <!-- 基于vant的表单验证：
+      1、使用vant-form组件包裹所有的表单项
+      2、给vant-form绑定submit事件
+      当表单提交的时候触发submit事件
+      提示：只有表单验证通过，他才会调用submit
+      3、使用 Field 的rules属性定义校验规则
+     -->
+    <van-form @submit="onLogin">
       <van-field
       v-model="user.mobile"
       icon-prefix="toutiao"
       left-icon="shouji"
-      placeholder="请输入手机号" />
+      placeholder="请输入手机号"
+      :rules="[{ required: true, message: '请填写用户名' }]"
+      />
       <van-field
       v-model="user.code"
       clearable
@@ -28,15 +37,14 @@
           </van-button>
        </template>
       </van-field>
-    </van-cell-group>
-    <div class="login-btn-wrap">
-      <van-button
-        class="login-btn"
-        type="info"
-        block
-        @click="onLogin"
-        >登录</van-button>
-    </div>
+      <div class="login-btn-wrap">
+        <van-button
+          class="login-btn"
+          type="info"
+          block
+          >登录</van-button>
+      </div>
+    </van-form>
     <!-- /登录表单 -->
   </div>
 </template>
